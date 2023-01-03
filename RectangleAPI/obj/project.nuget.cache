@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+4NWQaoYTzw2mr499fqONdwFP/aDFKPPu9r6tQZ8R5dmgCtUhZwND+a6ZwE005rO21uGBz5jDnY6kxjp6cu3pw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\RectangleAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yana.Knysh\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

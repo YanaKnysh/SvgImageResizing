@@ -1,7 +1,8 @@
 ﻿<div class="wrapper">
 <svg viewBox="100 -40 202 118">
     <g>
-        <rect x="0" y="0" width="150" height="100" color="red" id="rectangle" />
+        <rect x="0" y="0" width="200" height="150" color="red" id="rectangle" />
     </g>
 </svg>
 </div>
+<ng-template>Perimeter:{{this.perimeter}}</ng-template>

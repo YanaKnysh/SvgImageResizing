@@ -1,32 +1,39 @@
-﻿import {Component, OnInit, Renderer2} from '@angular/core';
+﻿import {Component, OnInit} from '@angular/core';
 import {DataService} from "../services/data.service";
+import {Size} from "../models/size";
 
 @Component({
     selector: 'app-svg',
-    templateUrl: './svg.component.svg',
+    templateUrl: "./svg.component.svg",
     styleUrls: ['./svg.component.css'],
     providers: [DataService]
 })
 export class SvgComponent implements OnInit {
-    fillColor = 'rgb(255, 0, 0)';
     
-    constructor(private datasevice: DataService, private renderer: Renderer2) {}
-
-    public changeColor() {
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        this.fillColor = `rgb(${r}, ${g}, ${b})`;
+    constructor(private datasevice: DataService) {}
+    
+    private initialSize: Size;
+    private currentSize: Size;
+    public perimeter: string;
+    
+    getInitialSize(){
+        this.datasevice.getInitialSize().subscribe((initialSize: Size) => {
+            this.initialSize = initialSize;
+        });
     }
     
-    getInitialSize(): number[]{
-        return this.datasevice.getInitialSize();
+    getPerimeter(){
+        this.datasevice.getPerimeter(this.currentSize).subscribe((perimeter: string) =>{
+            this.perimeter = perimeter;
+        })
     }
 
     ngOnInit(): void {
-        // let initialSize = this.getInitialSize();
-        // var rect = document.getElementById('rectangle');
-        // this.renderer.setStyle(rect, 'height', initialSize[0]);
-        // this.renderer.setStyle(rect, 'width', initialSize[1]);
+        this.getInitialSize();
+        var rect = document.getElementById('rectangle');
+        rect.style.height = this.initialSize.height;
+        rect.style.width = this.initialSize.width;
+        this.currentSize.height = rect.style.height;
+        this.currentSize.width = rect.style.width;
     }
 }
