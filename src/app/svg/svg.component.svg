@@ -4,5 +4,5 @@
         <rect x="0" y="0" width="200" height="150" color="red" id="rectangle" />
     </g>
 </svg>
+    <ng-template>Perimeter:{{this.perimeter}}</ng-template>
 </div>
-<ng-template>Perimeter:{{this.perimeter}}</ng-template>

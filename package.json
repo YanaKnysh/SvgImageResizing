@@ -5,7 +5,7 @@
   "author": "Yana Knysh",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-conf proxy.config.json",
     "build": "ng build"
   },
   "dependencies": {
