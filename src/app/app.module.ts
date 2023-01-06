@@ -9,6 +9,6 @@ import {HttpClientModule} from "@angular/common/http";
     imports: [ BrowserModule, FormsModule, HttpClientModule ],
     declarations: [ AppComponent, SvgComponent ],
     bootstrap: [ AppComponent ],
-    providers: [DataService]
+    providers: [DataService, SvgComponent]
 })
 export class AppModule { }

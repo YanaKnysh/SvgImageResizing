@@ -1,0 +1,21 @@
+﻿#wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    resize: both;
+    margin: 0 auto;
+    overflow: hidden;
+}
+svg {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    color: black;
+    float: left;
+    display: block;
+}
+#rectangle {
+    display: block;
+}
