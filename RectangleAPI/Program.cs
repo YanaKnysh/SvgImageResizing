@@ -1,5 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-[assembly: ApiController]
+using RectangleAPI.Interfaces;
+using RectangleAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -11,6 +12,8 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("http://localhost:4200/");
         });
 });
+builder.Services.AddSingleton<IBackgroundProcessor, BackgroundProcessor>();
+builder.Services.AddSingleton<IWriter, FileWriter>();
 
 var app = builder.Build();
 

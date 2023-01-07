@@ -10,34 +10,43 @@ import {Size} from "../models/size";
 })
 export class SvgComponent implements OnInit {
     
-    constructor(private datasevice: DataService) {}
+    constructor(private datasevice: DataService, private changeDetectorRef: ChangeDetectorRef) {}
     
-    private initialSize: Size;
-    private currentSize: Size;
+    public initialSize: Size;
+    public currentSize: Size = <Size>{};
     public perimeter: string;
     
-    getInitialSize(){
-        let result = this.datasevice.getInitialSize().subscribe((initialSize: Size) => {
+    getAndSetInitialSize(){
+        this.datasevice.getInitialSize().subscribe((initialSize: Size) => {
             this.initialSize = initialSize;
-            this.getPerimeterBySize();
-            //console.log(this.initialSize);
+            this.setRectangleSize(this.initialSize);
         });
     }
 
-    getPerimeterBySize(){
-        this.datasevice.getPerimeterBySize(this.initialSize).subscribe((perimeter: string) =>{
+    getPerimeterBySize(size: Size){
+        this.datasevice.getPerimeterBySize(size).subscribe((perimeter: string) =>{
             this.perimeter = perimeter;
             console.log(this.perimeter);
+            this.changeDetectorRef.detectChanges();
         })
+    }
+    
+    setRectangleSize(size: Size){
+        let rect = document.getElementById('svg_id');
+        rect.setAttribute('height', size.height);
+        rect.setAttribute('width', size.width);
+        this.currentSize.height = rect.getAttribute('height');
+        this.currentSize.width = rect.getAttribute('width');
+        this.getPerimeterBySize(this.currentSize);
+    }
+    
+    onResize(ev){
+        console.log('resize');
+        this.currentSize.width = ev.contentRect.width.toString();
+        this.currentSize.height = ev.contentRect.height.toString();
     }
 
     ngOnInit(): void {
-        this.getInitialSize();
-        var rect = document.getElementById('rectangle');
-        // rect.style.height = this.initialSize.height;
-        // rect.style.width = this.initialSize.width;
-        // this.currentSize.height = rect.style.height;
-        // this.currentSize.width = rect.style.width;
-        //this.getPerimeterBySize();
+        this.getAndSetInitialSize();
     }
 }

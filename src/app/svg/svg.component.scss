@@ -1,10 +1,10 @@
 ﻿#wrapper {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: fit-content;
+    height: fit-content;
     resize: both;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: auto;
 }
 svg {
     position: relative;
@@ -18,4 +18,12 @@ svg {
 }
 #rectangle {
     display: flex;
+    width: 100%;
+    height: 100%;
+}
+#perimeter{
+    margin-top: 1%;
+    text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: x-large;
 }

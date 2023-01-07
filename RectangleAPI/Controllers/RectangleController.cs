@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RectangleAPI.Interfaces;
 using RectangleAPI.Models;
 
 namespace RectangleAPI.Controllers;
@@ -8,6 +9,13 @@ namespace RectangleAPI.Controllers;
 [Route("[controller]/")]
 public class RectangleController : ControllerBase
 {
+    private readonly IBackgroundProcessor _backgroundProcessor;
+
+    public RectangleController(IBackgroundProcessor backgroundProcessor)
+    {
+        _backgroundProcessor = backgroundProcessor;
+    }
+    
     [HttpGet]
     [Route("initialsize")]
     public ActionResult<Size> GetInitialSize()
@@ -32,25 +40,16 @@ public class RectangleController : ControllerBase
     {
         var isHeightCorrect = int.TryParse(currentSize.Height, out int currentHeight);
         var isWidthCorrect = int.TryParse(currentSize.Width, out int currentWidth);
-
+        
         if (isHeightCorrect && isWidthCorrect)
         {
-            string fileName = Path.GetFullPath(Directory.GetCurrentDirectory() + @"\Data/currentSize.json");
-            using (StreamReader file = System.IO.File.OpenText(fileName))
-            {
-                dynamic jsonObj = JsonConvert.DeserializeObject(file.ReadToEnd()) ?? throw new InvalidOperationException();
-                file.Close();
-                jsonObj["height"] = currentSize.Height;
-                jsonObj["width"] = currentSize.Width;
-                string output = JsonConvert.SerializeObject(jsonObj, Formatting.Indented);
-                System.IO.File.WriteAllText(fileName, output);
-            }
+            _backgroundProcessor.Enqueue(currentSize);
         }
         else
         {
             return BadRequest("Parameters are not correct");
         }
-
+        
         return Ok((currentHeight * currentWidth).ToString());
     }
 }
