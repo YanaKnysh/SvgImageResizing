@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using RectangleAPI.Interfaces;
 using RectangleAPI.Models;
 
@@ -10,46 +9,47 @@ namespace RectangleAPI.Controllers;
 public class RectangleController : ControllerBase
 {
     private readonly IBackgroundProcessor _backgroundProcessor;
+    private readonly IReader _reader;
 
-    public RectangleController(IBackgroundProcessor backgroundProcessor)
+    public RectangleController(IBackgroundProcessor backgroundProcessor, IReader reader)
     {
         _backgroundProcessor = backgroundProcessor;
+        _reader = reader;
     }
     
-    [HttpGet]
-    [Route("initialsize")]
+    [HttpGet("initialsize")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Size))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<Size> GetInitialSize()
     {
-        Size? initialSize;
-        string fileName = Path.GetFullPath(Directory.GetCurrentDirectory() + @"\Data/initialSize.json");
-        using (StreamReader file = System.IO.File.OpenText(fileName))
+        Size initialSize;
+        
+        try
         {
-            JsonSerializer serializer = new JsonSerializer();
-            initialSize = (Size) serializer.Deserialize(file, typeof(Size))!;
+            initialSize = _reader.Read();
         }
-
-        if (initialSize == null)
-            return BadRequest("Json is invalid");
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
         
         return Ok(initialSize);
     }
     
-    [HttpPost]
-    [Route("perimeter")]
+    [HttpPost("perimeter")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<string> GetPerimeter(Size currentSize)
     {
-        var isHeightCorrect = int.TryParse(currentSize.Height, out int currentHeight);
-        var isWidthCorrect = int.TryParse(currentSize.Width, out int currentWidth);
-        
-        if (isHeightCorrect && isWidthCorrect)
+        try
         {
             _backgroundProcessor.Enqueue(currentSize);
         }
-        else
+        catch (Exception ex)
         {
-            return BadRequest("Parameters are not correct");
+            return StatusCode(500, ex.Message);
         }
-        
-        return Ok((currentHeight * currentWidth).ToString());
+
+        return Ok((currentSize.Height * currentSize.Width).ToString());
     }
 }

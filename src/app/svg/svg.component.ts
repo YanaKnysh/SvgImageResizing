@@ -26,24 +26,22 @@ export class SvgComponent implements OnInit {
     getPerimeterBySize(size: Size){
         this.datasevice.getPerimeterBySize(size).subscribe((perimeter: string) =>{
             this.perimeter = perimeter;
-            console.log(this.perimeter);
             this.changeDetectorRef.detectChanges();
         })
     }
     
     setRectangleSize(size: Size){
         let rect = document.getElementById('svg_id');
-        rect.setAttribute('height', size.height);
-        rect.setAttribute('width', size.width);
-        this.currentSize.height = rect.getAttribute('height');
-        this.currentSize.width = rect.getAttribute('width');
+        rect.setAttribute('height', size.height.toString());
+        rect.setAttribute('width', size.width.toString());
+        this.currentSize.height = Number(rect.getAttribute('height'));
+        this.currentSize.width = Number(rect.getAttribute('width'));
         this.getPerimeterBySize(this.currentSize);
     }
     
     onResize(ev){
-        console.log('resize');
-        this.currentSize.width = ev.contentRect.width.toString();
-        this.currentSize.height = ev.contentRect.height.toString();
+        this.currentSize.width = ev.contentRect.width;
+        this.currentSize.height = ev.contentRect.height;
     }
 
     ngOnInit(): void {

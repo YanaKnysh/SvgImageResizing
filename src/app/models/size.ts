@@ -1,4 +1,4 @@
 ﻿export interface Size {
-    height: string;
-    width: string;
+    height: number;
+    width: number;
 }

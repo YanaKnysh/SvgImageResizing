@@ -14,6 +14,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSingleton<IBackgroundProcessor, BackgroundProcessor>();
 builder.Services.AddSingleton<IWriter, FileWriter>();
+builder.Services.AddSingleton<IReader, FileReader>();
 
 var app = builder.Build();
 

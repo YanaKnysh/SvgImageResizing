@@ -28,15 +28,8 @@ public class BackgroundProcessor : IBackgroundProcessor
         {
             sizes.Add(size);
         }
+    }
 
-        Console.WriteLine(sizes.Count);
-    }
-    
-    public void Stop()
-    {
-        sizes.CompleteAdding();
-    }
-    
     private void OnHandlerStart()
     {
         foreach (var size in sizes.GetConsumingEnumerable(CancellationToken.None))
