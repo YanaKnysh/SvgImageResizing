@@ -6,7 +6,7 @@ namespace RectangleAPI.Services;
 
 public class FileReader : IReader
 {
-    private string jsonFile = @"\Data/initialSize.json";
+    private string jsonFile = @"/Data/initialSize.json";
     
     public Size Read()
     {
