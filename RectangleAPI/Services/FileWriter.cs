@@ -6,7 +6,7 @@ namespace RectangleAPI.Services;
 
 public class FileWriter : IWriter
 {
-    private string jsonFile = @"\Data/currentSize.json";
+    private string jsonFile = @"/Data/currentSize.json";
     
     public void Write(Size size)
     {
