@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\RectangleAPI.csproj": {}
+    "C:\\Users\\Yana.Knysh\\RiderProjects\\TestSvgImageResizing\\RectangleAPI\\RectangleAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\RectangleAPI.csproj": {
+    "C:\\Users\\Yana.Knysh\\RiderProjects\\TestSvgImageResizing\\RectangleAPI\\RectangleAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\RectangleAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Yana.Knysh\\RiderProjects\\TestSvgImageResizing\\RectangleAPI\\RectangleAPI.csproj",
         "projectName": "RectangleAPI",
-        "projectPath": "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\RectangleAPI.csproj",
+        "projectPath": "C:\\Users\\Yana.Knysh\\RiderProjects\\TestSvgImageResizing\\RectangleAPI\\RectangleAPI.csproj",
         "packagesPath": "C:\\Users\\Yana.Knysh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yana.Knysh\\RiderProjects\\SvgImageResizing\\RectangleAPI\\obj\\",
+        "outputPath": "C:\\Users\\Yana.Knysh\\RiderProjects\\TestSvgImageResizing\\RectangleAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yana.Knysh\\AppData\\Roaming\\NuGet\\NuGet.Config",
