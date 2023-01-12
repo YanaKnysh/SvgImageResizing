@@ -50,6 +50,6 @@ public class RectangleController : ControllerBase
             return StatusCode(500, ex.Message);
         }
 
-        return Ok((currentSize.Height * currentSize.Width).ToString());
+        return Ok((2*(currentSize.Height + currentSize.Width)).ToString());
     }
 }
