@@ -1,7 +1,8 @@
 # compiled output  
 /dist  
 /tmp  
-/out-tsc  
+/out-tsc
+/.angular/cache  
   
 # dependencies  
 /node_modules  
