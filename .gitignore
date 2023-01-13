@@ -1,11 +1,11 @@
 # compiled output  
-/dist  
-/tmp  
-/out-tsc
-/.angular/cache  
+/AngularSvgApp/dist  
+/AngularSvgApp/tmp  
+/AngularSvgApp/out-tsc
+/AngularSvgApp/.angular/cache 
   
 # dependencies  
-/node_modules  
+/AngularSvgApp/node_modules  
   
 # IDEs and editors  
 /.idea  
