@@ -8,7 +8,9 @@
 /AngularSvgApp/node_modules  
   
 # IDEs and editors  
-/.idea  
+/.idea
+RectangleAPI/.idea
+AngularSvgApp/.idea   
 .project  
 .classpath  
 .c9/  
