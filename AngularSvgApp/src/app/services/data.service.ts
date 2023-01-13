@@ -14,7 +14,7 @@ export class DataService{
     private baseUrl = '/api/rectangle'
 
     getInitialSize(): Observable<Size> {
-        return this.http.get<Size>(`${this.baseUrl}/initialsize`);
+        return this.http.get<Size>(`${this.baseUrl}/initial-size`);
     }
 
     getPerimeterBySize(size: Size): Observable<string> {
