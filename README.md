@@ -2,12 +2,12 @@
 Test task for resizing SVG image using Angular and .NET.:
 
 API: RectangleAPI - .NET 7 web application with RectangleController. It has two methods:
-- GET /rectangle/initialsize - returns initial size of rectangle
+- GET /rectangle/initial-size - returns initial size of rectangle
 - POST /rectangle/perimenter - returns perimeter of rectangle, updates current size parameters to json file
 
 UI: Angular 15 project that displays SVG rectangle figure with initial size, rectangle is resizable, current perimeter is shown below the figure
 
-## To run this web application:
+## To run this web application (Windows):
 1. Git clone the repository
 2. Open RectangleAPI project in Rider/VS Studio
 3. Launch RectangleAPI with http configuration (port is set to http://localhost:5131)
@@ -19,9 +19,8 @@ The page will look like (example):
 ![image](/assets/images/screenshot.png)
 
 ### Additional information:
-There are two json files: *initialSize.json* and *currentSize.json* (location: Project\RectangleAPI\Data)
-1. initialSize.json - file with initial size information. Height = 100. Width = 150. You can update these values to change initial size.
-2. currentSize.json - file with current size information. It is updated automatically after resizing of rectangle figure.
+There is a json file called: *currentSize.json* (location: Project\RectangleAPI\Data)
+It is the file with current size information. It is updated automatically after resizing of rectangle figure.
 
 ## Task:
 Create a webpage for drawing rectangle svg figure<br/>

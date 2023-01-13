@@ -1,13 +1,16 @@
 # compiled output  
-/dist  
-/tmp  
-/out-tsc  
+/AngularSvgApp/dist  
+/AngularSvgApp/tmp  
+/AngularSvgApp/out-tsc
+/AngularSvgApp/.angular/cache 
   
 # dependencies  
-/node_modules  
+/AngularSvgApp/node_modules  
   
 # IDEs and editors  
-/.idea  
+/.idea
+RectangleAPI/.idea
+AngularSvgApp/.idea   
 .project  
 .classpath  
 .c9/  

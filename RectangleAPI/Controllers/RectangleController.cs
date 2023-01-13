@@ -17,7 +17,7 @@ public class RectangleController : ControllerBase
         _reader = reader;
     }
     
-    [HttpGet("initialsize")]
+    [HttpGet("initial-size")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Size))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<Size> GetInitialSize()
